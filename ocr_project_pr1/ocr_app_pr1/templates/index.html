@@ -1,0 +1,159 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Image Upload and Scan</title>
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+    
+        <link rel="icon" type="image/jpg" href="{% static 'sunscreeningredients3-2_grande.webp' %}">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <style>
+            body, html {
+                height: 100%;
+                width:100%;
+                margin: 0;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                font-family: Arial, sans-serif;
+                background-image: url("{% static '403999-111122-ent-breakingbad-hmed.webp' %}");
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+            }
+            .container {
+                text-align: center;
+                width: 100%;
+                max-width: 500px;
+                background-color: rgba(255, 255, 255, 0.4);
+                padding: 20px;
+                border-radius: 10px;
+            }
+            form {
+                margin: 20px 0;
+            }
+
+            button {
+                margin-top: 20px;
+                padding: 10px 20px;  /* Increased padding for a larger button */
+                background-color: #EB5A39;  /* Green background */
+                color: white;  /* White text */
+                border: none;  /* Removes border */
+                border-radius: 5px;  /* Rounded corners */
+                cursor: pointer;  /* Pointer cursor on hover */
+                font-size: 16px;  /* Larger font size */
+                transition: background-color 0.3s ease, transform 0.3s ease;  /* Smooth transition for hover effects */
+            }
+/* Hide the actual file input */
+            input[type="file"] {
+                display: none;
+            }
+
+/* Style the custom file input button */
+            .custom-file-upload {
+                display: inline-block;
+                padding: 10px 200px;  /* Adjust padding for button size */
+                background-color: #EB5A39;  /* Green background */
+                color: white;  /* White text */
+                border: none;  /* No border */
+                border-radius: 5px;  /* Rounded corners */
+                cursor: pointer;  /* Pointer cursor on hover */
+                font-size: 16px;  /* Larger font size */
+                transition: background-color 0.3s ease, transform 0.3s ease;  /* Smooth transition */
+            }
+
+/* Hover effect for custom file input button */
+            .custom-file-upload:hover {
+                background-color: #45a049;  /* Darker green on hover */
+                transform: scale(1.05);  /* Slightly enlarges button on hover */
+            }
+            button:hover {
+                background-color: #45a049;  /* Darker green on hover */
+                transform: scale(1.05);  /* Slightly enlarges button on hover */
+            }
+
+
+            {% comment %} .extra-images {
+                display: flex;
+                justify-content: center;
+                margin-top: 20px;
+    
+            } {% endcomment %}
+            .clickable-image {
+                width: 80px;
+                height: 80px;
+                cursor: pointer;
+                transition: transform 0.3s ease;
+            }
+            .clickable-image:hover {
+                transform: scale(1.1);
+            }
+
+            
+        </style>
+    </head>
+<body>
+    <div class="container">
+        <h1>NutriScan</h1>
+        <form id="upload-form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="file-upload" class="custom-file-upload">
+                Choose File
+            </label>
+            <input id="file-upload" type="file" name="file" required>
+            <button type="submit">Upload and Scan</button>
+        </form>
+        
+        
+        <h3>Your product have these Harmful Ingredients:</h3>
+        <ul id="output"></ul>
+
+        {% comment %} <!-- Additional Images lagana hai -->
+        <div class="extra-images">
+            <img src="{% static 'sunscreeningredients3-2_grande.webp' %}" alt="Extra Image 1" class="clickable-image">
+        </div>
+    </div> {% endcomment %}
+
+    <script>
+        $(document).ready(function(){
+            $('#upload-form').on('submit', function(e){
+                e.preventDefault();
+
+                const formData = new FormData(this);
+
+                // Adding the CSRF token
+                formData.append('csrfmiddlewaretoken', '{{ csrf_token }}');
+
+                $.ajax({
+                    url: "{% url 'upload_and_scan_image' %}",
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function(data){
+                        $('#output').empty();  // Clear previous results
+                        if(data.matched_ingredients.length > 0){
+                            $.each(data.matched_ingredients, function(index, ingredient){
+                                $('#output').append('<li><strong>' + ingredient.name + ':</strong> ' + ingredient.description + '</li>');
+                            });
+                        } else {
+                            $('#output').append('<li>Nothing Harmful Detected Maje karo.</li>');
+                        }
+                    },
+                    error: function(xhr, status, error){
+                        console.error('Error:', error);
+                    }
+                });
+            });
+
+            // Code to handle image clicks
+            $('.clickable-image').on('click', function() {
+                $(this).fadeOut();
+            });
+        });
+    </script>
+</body>
+</html>

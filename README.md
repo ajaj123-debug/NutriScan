@@ -12,3 +12,7 @@ NutriScan project is a Django-based web application designed to help users scan 
 **Optimized Performance:** Here i'm  focused on optimizing the Django views to handle OCR processing efficiently, ensuring a smooth user experience even with potentially high computational demands.
 
 Overall, nutriScan project aims to be a user-friendly tool for consumers to better understand the products we use daily, promoting informed choices by highlighting the presence of harmful chemicals.
+
+
+
+

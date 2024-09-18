@@ -1,0 +1,94 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Scanned Ingredients</title>
+    <link rel="stylesheet" href="{% static 'css/dark-mode.css' %}">
+
+    <style>
+        .ingredients-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .ingredients-list {
+            width: 45%;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: #f8f8f8;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .ingredients-list h3 {
+            color: #D94720;
+            text-align: center;
+        }
+        .ingredient-card {
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: #ffffff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .ingredient-card h4 {
+            margin: 0 0 5px;
+            font-size: 1.2rem;
+        }
+        .ingredient-card p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    {% include "navbar.html" %}
+    {% comment %} {% extends "navbar.html" %} {% endcomment %}
+    <div class="container mt-5">
+        <h1 class="text-center">Scanned Ingredients</h1>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label for="product_image" class="form-label">Upload Product Image</label>
+                <input class="form-control" type="file" id="product_image" name="product_image">
+            </div>
+            <button type="submit" class="btn btn-primary">Scan</button>
+        </form>
+
+        <div class="ingredients-container mt-4">
+            <!-- Useful Ingredients -->
+            <div class="ingredients-list">
+                <h3>Useful Ingredients</h3>
+                {% if useful_ingredients %}
+                    {% for ingredient in useful_ingredients %}
+                        <div class="ingredient-card">
+                            <h4>{{ ingredient.name }}</h4>
+                            <p>{{ ingredient.description }}</p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No useful ingredients found.</p>
+                {% endif %}
+            </div>
+
+            <!-- Harmful Ingredients -->
+            <div class="ingredients-list">
+                <h3>Harmful Ingredients</h3>
+                {% if harmful_ingredients %}
+                    {% for ingredient in harmful_ingredients %}
+                        <div class="ingredient-card">
+                            <h4>{{ ingredient.name }}</h4>
+                            <p>{{ ingredient.effect }}</p>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <p>No harmful ingredients found.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

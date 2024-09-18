@@ -1,0 +1,162 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>NutriScan - Home</title>
+    <link rel="stylesheet" href="{% static 'css/dark-mode.css' %}">
+
+    {% comment %} <link rel="stylesheet" href="{% static 'css/styles.css' %}"> {% endcomment %}
+    <style>
+        /* Hero Section */
+        .hero-section {
+            background-image: url('{% static "images/hero-background.jpg" %}'); /* Replace with your background image */
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 100px 20px;
+            position: relative;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            {% comment %} background-color: rgba(0, 0, 0, 0.5); {% endcomment %}
+            background-image:url("{% static 'homeimage.jpg' %}");
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 700px;
+            margin: auto;
+            color: #D94720;
+        }
+
+        .hero-title {
+            font-size: 4rem;
+            color: white;
+            margin-bottom: 20px;
+            font-family: "Archivo Black", sans-serif;
+            font-weight: 400;
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            color: white;
+            margin-bottom: 30px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .hero-button {
+            background-color: #D94720;
+            color: white;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-transform: uppercase;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .hero-button:hover {
+            background-color: #c33d1b;
+        }
+
+        /* Features Section */
+        .features-section {
+            padding: 60px 20px;
+            background-color: #f0f0f0;
+        }
+
+        .features-title {
+            font-size: 2.5rem;
+            color: #D94720;
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .feature-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: #D94720;
+            margin-bottom: 15px;
+        }
+
+        .feature-text {
+            font-size: 1.2rem;
+            color: #333;
+            margin-bottom: 10px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+    </style>
+</head>
+<body>
+
+    {% include "navbar.html" %}
+    {% comment %} {% extends "navbar.html" %} {% endcomment %}
+
+<!-- Hero Section -->
+<div class="hero-section">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+        <strong><h1 class="hero-title">Welcome to NutriScan</h1></strong>
+        <strong><p class="hero-subtitle">Your personal assistant for safer and healthier choices.</p></strong>
+        <a href="#features" class="hero-button">Learn More</a>
+    </div>
+</div>
+
+<!-- Features Section -->
+<div id="features" class="features-section">
+    <h2 class="features-title">Why Choose NutriScan?</h2>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">&#128269;</div>
+                    <p class="feature-text">Quick and Easy Scanning</p>
+                    <p>Scan product labels with ease and get instant feedback on ingredients.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">&#128200;</div>
+                    <p class="feature-text">Comprehensive Database</p>
+                    <p>Access a regularly updated database of harmful chemicals and additives.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="feature-card">
+                    <div class="feature-icon">&#128161;</div>
+                    <p class="feature-text">User-Friendly Interface</p>
+                    <p>Navigate easily through the app and understand results in no time.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

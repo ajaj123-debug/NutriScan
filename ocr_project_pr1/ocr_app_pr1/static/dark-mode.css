@@ -1,0 +1,29 @@
+/* Dark mode styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #ffffff;
+}
+body {
+    padding-top: 70px; /* Increase padding to account for the height of the navbar */
+}
+
+
+.dark-mode .navbar {
+    background-color: #333; /* Dark navbar color */
+}
+
+.dark-mode .navbar .nav-link {
+    color: #ffffff; /* Navbar links color in dark mode */
+}
+
+.dark-mode .btn-outline-light {
+    color: #ffffff;
+    border-color: #ffffff;
+}
+
+.dark-mode .btn-outline-light:hover {
+    background-color: #ffffff;
+    color: #333;
+}
+
+/* Add more dark mode styles as needed */

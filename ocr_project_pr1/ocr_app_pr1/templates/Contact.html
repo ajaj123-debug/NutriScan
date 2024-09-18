@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Contact NutriScan</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}"> <!-- Link to your custom CSS file -->
+    <link rel="stylesheet" href="{% static 'css/dark-mode.css' %}">
+
+    <style>
+        .contact-section {
+            background-color: #f0f0f0;
+            padding: 60px 20px;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: auto;
+            background-image: url( "{% static 'IMG20240731123206.jpg' %}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-title {
+            font-size: 2.5rem;
+            color: #D94720;
+            margin-bottom: 20px;
+            text-align: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .form-control {
+            margin-bottom: 20px;
+            padding: 15px;
+            font-size: 1rem;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .form-control:focus {
+            border-color: #D94720;
+            box-shadow: 0 0 8px rgba(217, 71, 32, 0.2);
+        }
+
+        .contact-button {
+            background-color: #D94720;
+            color: white;
+            padding: 10px 20px;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .contact-button:hover {
+            background-color: #c33d1b;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .contact-info p {
+            font-size: 1.1rem;
+            color: #D94720;
+            margin-bottom: 5px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .contact-info a {
+            color: #D94720;
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .contact-info a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+{% include 'navbar.html' %}
+{% comment %} {% extends "navbar.html" %} {% endcomment %}
+<div class="contact-section">
+    <div class="contact-container">
+        <h1 class="contact-title">Contact Us</h1>
+        <form action="#" method="POST">
+            <input type="text" class="form-control" name="name" placeholder="Your Name" required>
+            <input type="email" class="form-control" name="email" placeholder="Your Email" required>
+            <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+            <textarea class="form-control" name="message" rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit" class="contact-button">Send Message</button>
+        </form>
+
+        <div class="contact-info">
+            <p>Or reach us directly at:</p>
+            <p><a href="mailto:info@nutriscan.com">info@nutriscan.com</a></p>
+            <p>Phone: +91 70795 53517</p>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

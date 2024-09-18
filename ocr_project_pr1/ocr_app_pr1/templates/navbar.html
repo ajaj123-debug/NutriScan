@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>NutriScan : Upload and Scan</title>
+    <style>
+        .navbar {
+            width: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            position: fixed; 
+            top: 0;
+            left: 0;
+            z-index: 1000; /* Ensures navbar is above other content */
+            background-color: #D94720;
+            padding: 0.3rem 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adds shadow to navbar */
+        }
+        .navbar .navbar-brand {
+            color: white; 
+            padding: 0.3rem 0; /* Adjust padding for a slimmer look */
+        }
+        .navbar .nav-link {
+            color: white;
+            padding: 0.3rem 0.5rem; /* Reduce padding for nav-links to make them slimmer */
+        }
+        .navbar .nav-link:hover {
+            color: #ffccbc; /* Lighter color on hover for nav-links */
+        }
+        body {
+            padding-top: 56px; /* Offset for fixed navbar */
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="{% url 'Home' %}">NutriScan</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="{% url 'Home' %}">Home</a>
+                </li></li><li class="nav-item">
+                    <a class="nav-link" href="{% url 'index' %}">Scan</a>
+                </li>
+                {% comment %} <li class="nav-item">
+                    <a class="nav-link" href="{% url 'upload_and_scan_image' %}">Scan </a>
+                </li> {% endcomment %}
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Ingredient' %}">Ingredients</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'About' %}">About</a>
+                <li class="nav-item">
+                    <a class="nav-link" href="{% url 'Contact' %}">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<!-- Your page content here -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

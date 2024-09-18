@@ -4,8 +4,8 @@ from django.contrib import admin
 # admin.py
 
 from django.contrib import admin
-from .models import HarmfulIngredient
+from .models import *
 
 admin.site.register(HarmfulIngredient)
-
-# modification of the Admin.py
+admin.site.register(product_type)
+admin.site.register(Harmful_Ingredients)

@@ -17,9 +17,18 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from ocr_app_pr1.views import upload_and_scan_image
-
+from ocr_app_pr1.views import *
+from django.contrib import admin
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', upload_and_scan_image, name='upload_and_scan_image'),
-]
+    path('upload_and_scan_image', upload_and_scan_image, name='upload_and_scan_image'),
+    path('About',About, name='About'),
+    path('Contact', Contact, name = 'Contact'),
+    path('', Home, name= 'Home'),
+    path('Ingredient', Ingredient, name = 'Ingredient'),
+    path('index', index, name = 'index')
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

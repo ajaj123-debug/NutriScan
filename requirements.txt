@@ -14,3 +14,4 @@ psycopg2-binary==2.9.6  # If using PostgreSQL (modify based on your database)
 
 # Utility libraries
 requests==2.31.0  # For making HTTP requests if needed
+gunicorn

@@ -1,0 +1,16 @@
+# Django framework
+Django==4.2.1  # Adjust the version according to your Django setup
+
+# For handling images and OCR processing
+pillow==10.0.0  # PIL (Pillow) for image manipulation
+pytesseract==0.3.10  # Python wrapper for Tesseract OCR
+
+# Database handling and storage
+djangorestframework==3.14.0  # If you are using Django REST Framework (considering the JSON responses)
+django-storages==1.13.2  # If using custom storage backends (for file handling)
+
+# To interface with your database models
+psycopg2-binary==2.9.6  # If using PostgreSQL (modify based on your database)
+
+# Utility libraries
+requests==2.31.0  # For making HTTP requests if needed
